@@ -1,0 +1,1450 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "iteration": 1614173184330,
+  "links": [
+    {
+      "icon": "dashboard",
+      "tags": [],
+      "targetBlank": true,
+      "title": "OLM - Installation/Usage ",
+      "tooltip": "Opens this dashboard in a new tab",
+      "type": "link",
+      "url": "/d/DCSXmFTWk5/olm-installation-usage?orgId=1"
+    }
+  ],
+  "panels": [
+    {
+      "collapsed": false,
+      "datasource": "${DS_RECENT}",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 41,
+      "panels": [],
+      "title": "Overview",
+      "type": "row"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "$datasource",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 0,
+        "y": 1
+      },
+      "id": 57,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "count(count by (_id) (subscription_sync_total{installed=~\"$operatorversion\"} $source $source_version))",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "intervalFactor": 1,
+          "refId": "A"
+        }
+      ],
+      "thresholds": "",
+      "title": "Clusters running Operator",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "avg"
+    },
+    {
+      "cacheTimeout": null,
+      "columns": [],
+      "datasource": "$datasource",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 8,
+        "y": 1
+      },
+      "id": 63,
+      "links": [],
+      "pageSize": null,
+      "showHeader": true,
+      "sort": {
+        "col": null,
+        "desc": false
+      },
+      "styles": [
+        {
+          "alias": "",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 0,
+          "pattern": "Time",
+          "thresholds": [],
+          "type": "hidden",
+          "unit": "short"
+        },
+        {
+          "alias": "Operator version",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "installed",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "expr": "sort_desc (count by (installed) (topk by (_id) (1, subscription_sync_total{installed=~\"$operatorversion\"} $source $source_version)))",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "intervalFactor": 1,
+          "refId": "A"
+        }
+      ],
+      "title": "Clusters running Operator Versions",
+      "transform": "table",
+      "type": "table-old"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "$datasource",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 16,
+        "y": 1
+      },
+      "id": 47,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false,
+        "ymax": null,
+        "ymin": null
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "count (count by (email_domain) (count by (_id, email_domain) (subscription_sync_total{installed=~\"$operatorversion\"} $source $source_version + on (_id) group_left(email_domain) (0 * topk by (_id) (1, subscription_labels $source $source_version)))) > 1)",
+          "format": "table",
+          "hide": false,
+          "instant": true,
+          "refId": "A"
+        }
+      ],
+      "thresholds": "",
+      "title": "Customers running Operator in more than 1 cluster",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "avg"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "$datasource",
+      "decimals": 4,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 0,
+        "y": 9
+      },
+      "id": 44,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "(sum(cluster:memory_usage_bytes:sum $source $source_version + on (_id) group_left(installed) (0 * topk by (_id) (1, subscription_sync_total{installed=~\"$operatorversion\"} $source $source_version))) / (2^30)) \n/ \ncount(count by (_id) (cluster_version{type=\"completed\"} $source $source_version + on (_id) group_left(installed) (0 * topk by (_id) (1, subscription_sync_total{installed=~\"$operatorversion\"} $source $source_version))))",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "B"
+        }
+      ],
+      "thresholds": "",
+      "title": "Avg RAM (GiB) per Cluster Installed",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "avg"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "$datasource",
+      "decimals": 4,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 8,
+        "y": 9
+      },
+      "id": 46,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "sum(cluster:capacity_cpu_cores:sum $source $source_version + on (_id) group_left(installed) (0 * topk by (_id) (1, subscription_sync_total{installed=~\"$operatorversion\"} $source $source_version))) \n/ \ncount(count by (_id) (cluster_version{type=\"completed\"} $source $source_version + on (_id) group_left(installed) (0 * topk by (_id) (1, subscription_sync_total{installed=~\"$operatorversion\"} $source $source_version))))",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "B"
+        }
+      ],
+      "thresholds": "",
+      "title": "Avg CPU cores per Cluster Installed",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "avg"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "$datasource",
+      "decimals": 4,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 16,
+        "y": 9
+      },
+      "id": 45,
+      "interval": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "expr": "sum(cluster:node_instance_type_count:sum $source $source_version + on (_id) group_left(installed) (0 * topk by (_id) (1, subscription_sync_total{installed=~\"$operatorversion\"} $source $source_version))) \n/ count(count by (_id) (cluster_version{type=\"completed\"} $source $source_version + on (_id) group_left(installed) (0 * topk by (_id) (1, subscription_sync_total{installed=~\"$operatorversion\"} $source $source_version))))",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "B"
+        }
+      ],
+      "thresholds": "",
+      "title": "Avg Nodes per Cluster Installed",
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "N/A",
+          "value": "null"
+        }
+      ],
+      "valueName": "avg"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "$datasource",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 17
+      },
+      "hiddenSeries": false,
+      "id": 55,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.4.2",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "count(count by (_id) (subscription_sync_total{installed=~\"$operatorversion\"} $source $source_version))",
+          "format": "time_series",
+          "instant": false,
+          "intervalFactor": 10,
+          "legendFormat": "installed",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Clusters install count",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "collapsed": false,
+      "datasource": "${DS_RECENT}",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 24
+      },
+      "id": 22,
+      "panels": [],
+      "title": "Installation",
+      "type": "row"
+    },
+    {
+      "aliasColors": {},
+      "breakPoint": "50%",
+      "cacheTimeout": null,
+      "combine": {
+        "label": "Others",
+        "threshold": "0.03"
+      },
+      "datasource": "$datasource",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fontSize": "80%",
+      "format": "short",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 25
+      },
+      "id": 38,
+      "interval": "",
+      "legend": {
+        "percentage": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "values": true
+      },
+      "legendType": "Right side",
+      "links": [],
+      "maxDataPoints": 3,
+      "nullPointMode": "connected",
+      "pieType": "pie",
+      "strokeWidth": 1,
+      "targets": [
+        {
+          "expr": "count by (channel) (topk by (_id) (1, subscription_sync_total{installed=~\"$operatorversion\",channel!=\"\"} $source $source_version))",
+          "format": "time_series",
+          "intervalFactor": 1,
+          "legendFormat": "{{channel}}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Channel breakdown",
+      "type": "grafana-piechart-panel",
+      "valueName": "current"
+    },
+    {
+      "aliasColors": {},
+      "breakPoint": "50%",
+      "cacheTimeout": null,
+      "combine": {
+        "label": "Others",
+        "threshold": 0
+      },
+      "datasource": "$datasource",
+      "decimals": 0,
+      "description": "Cloud provider type and the installation method used.  Unknown cloud type is clusters older than 4.1.10, and unknown install type is clusters older than 4.1.8.",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fontSize": "80%",
+      "format": "short",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 25
+      },
+      "id": 35,
+      "interval": "",
+      "legend": {
+        "header": "",
+        "percentage": false,
+        "percentageDecimals": 1,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "values": true
+      },
+      "legendType": "Right side",
+      "links": [],
+      "maxDataPoints": 3,
+      "nullPointMode": "connected",
+      "pieType": "donut",
+      "strokeWidth": 1,
+      "targets": [
+        {
+          "expr": "(count by (cloud_type, type) \n((topk by (_id) (1, subscription_sync_total{installed=~\"$operatorversion\"} $source $source_version\n+ on (_id) group_left(cloud_type) (topk by (_id) (1, 0 * label_replace(label_replace((cluster_infrastructure_provider $source $source_version) or label_replace(cluster_installer $source $source_version, \"type\", \"\", \"type\", \".*\"), \"type\", \"Unknown\", \"type\", \"\"), \"cloud_type\", \"$1\", \"type\", \"(.*)\")))\n+ on(_id) group_left(type) (topk by (_id) (1, label_replace(label_replace(cluster_installer $source $source_version, \"type\", \"UPI\", \"type\", \"(|other)\"), \"type\", \"IPI\", \"type\", \"openshift-install\")\n  or on (_id) label_replace(cluster_installer, \"type\", \"Unknown\", \"type\", \".*\")))))))",
+          "format": "time_series",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{cloud_type}} ({{type}})",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "OCP platform install count",
+      "type": "grafana-piechart-panel",
+      "valueName": "current"
+    },
+    {
+      "columns": [],
+      "datasource": "$datasource",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 33
+      },
+      "id": 32,
+      "pageSize": null,
+      "showHeader": true,
+      "sort": {
+        "col": null,
+        "desc": false
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "align": "auto",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "hidden"
+        },
+        {
+          "alias": "no. of installs",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "mappingType": 1,
+          "pattern": "Value",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "expr": "sort_desc((count by (version) (topk by (_id) (1, subscription_sync_total{installed=~\"$operatorversion\"} $source $source_version + on (_id) group_left(version) (topk by (_id) (1, 0 * cluster_version{type=\"completed\"} $source $source_version))))))",
+          "format": "table",
+          "instant": true,
+          "refId": "C"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "OCP versions install count",
+      "transform": "table",
+      "type": "table-old"
+    },
+    {
+      "columns": [],
+      "datasource": "$datasource",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 33
+      },
+      "id": 51,
+      "pageSize": null,
+      "showHeader": true,
+      "sort": {
+        "col": null,
+        "desc": false
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "align": "auto",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "hidden"
+        },
+        {
+          "alias": "Architecture",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 2,
+          "pattern": "label_kubernetes_io_arch",
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        },
+        {
+          "alias": "no. of installs",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "mappingType": 1,
+          "pattern": "Value",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "expr": "sort_desc((count by (label_kubernetes_io_arch) (topk by (_id) (1, subscription_sync_total{installed=~\"$operatorversion\"} $source $source_version + on (_id) group_left(label_kubernetes_io_arch) (topk by (_id) (1, 0 * node_role_os_version_machine:cpu_capacity_cores:sum $source $source_version))))))",
+          "format": "table",
+          "instant": true,
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Install by Architecture",
+      "transform": "table",
+      "type": "table-old"
+    },
+    {
+      "collapsed": false,
+      "datasource": "${DS_RECENT}",
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 41
+      },
+      "id": 53,
+      "panels": [],
+      "title": "Health",
+      "type": "row"
+    },
+    {
+      "datasource": "${DS_RECENT}",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 42
+      },
+      "id": 65,
+      "options": {
+        "content": "\n### CSV Condition Reasons\n\nThe following table provides a short description of what the condition means:\n\n\n| **Condition Reason**                        | **Explanation for Telemetry**                                                                                                                              | **Operator is running**                 |\n| ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |\n| RequirementsUnknown                         | OLM hasn't gotten around to checking for requirements yet                                                                                                  | no                                      |\n| RequirementsNotMet                          | One or more requirements to install haven't been met (crds, nativeapis, apis, serviceaccount, rbac)                                                        | no                                      |\n| AllRequirementsMet                          | The Operator is currently installing and all of its requirements have been met                                                                             | No (installing)                         |\n| OwnerConflict                               | Two operators own the same apis in the namespace, but are not connected via a chain of \"replaces\" (rare, mostly caused by a bug in 4.2)                    | no                                      |\n| InstallComponentFailed                      | Failed to create a component that makes up the Operator: deployment, CRD, RBAC apiservices, etc.                                                           | no                                      |\n| InvalidInstallStrategy                      | The install strategy for a csv is not in the format we expect.                                                                                             | no                                      | \n| InstallWaiting                              | Install is progressing and OLM is waiting for components to come online.                                                                                   | No (Installing)                         |\n| InstallSucceeded                            | The operator's deployments are all ready/available.                                                                                                        | yes                                     |\n| InstallCheckFailed                          | The operator never became healthy, OLM now treats the operator as failed.                                                                                  | no                                      |\n| ComponentUnhealthy                          | Some requirement or component is not in the state it should be, the Operator will be flipped back in an attempt to recreate anything that belongs to it.   | likely no                               |\n| BeingReplaced                               | Operator is being updated                                                                                                                                  | yes                                     |\n| Replaced                                    | Operator has been updated and newer version is healthy                                                                                                     | yes                                     |\n| NeedsReinstall                              | Operator configuration got updated ( subscription.config, rotating certs, proxy config, etc) and the Operator needs to be redeployed with the new settings | yes                                     |\n| NeedsCertRotation                           | The certs will be rotated for an apiservice-based operator.                                                                                                | yes                                     |\n| APIServiceResourceIssue                     | A previously created resource required to deploy an extension apiserver has disappeared.                                                                   | likely no                               |\n| APIServiceResourcesNeedReinstall            | Some resources required to run extension apiservers were not in the expected state, OLM will attempt to recreate them.                                     | likely no                               |\n| APIServiceInstallFailed                     | Extension apiserver install has failed in a way that OLM can't recover.                                                                                    | no                                      |\n| Copied                                      | This CSV is a placeholder to indicate the operator is watching the current namespace.                                                                      | Yes (depends on the parent, \"real\" csv) |\n| InvalidInstallModes                         | The CSV contains improperly formatted installmodes (duplicate entries, typos, etc)                                                                         | no                                      |\n| NoTargetNamespaces                          | There are no namespaces resolved as target namespaces for the current operatorgroup.                                                                       | no                                      |\n| UnsupportedOperatorGroup                    | The current operatorgroup does not support the installmodes of the Operator.                                                                               | no                                      |\n| NoOperatorGroup                             | Operator cannot be installed because the namespace does not have an OperatorGroup.                                                                         | no                                      |\n| TooManyOperatorGroups                       | We currently only allow 1 OperatorGroup per namespace.                                                                                                     | no                                      |\n| InterOperatorGroupOwnerConflict             | The operator provides an API that another operator provides in the current namespace (i.e. it is provided in an operatorgroup that targets this namespace) | no                                      |\n| CannotModifyStaticOperatorGroupProvidedAPIs | A CSV is present in an operatorgroup with \"static\" provided apis set and provides apis not in the set.                                                     |                                         |",
+        "mode": "markdown"
+      },
+      "pluginVersion": "7.4.2",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "README.md",
+      "type": "text"
+    },
+    {
+      "columns": [],
+      "datasource": "$datasource",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 49
+      },
+      "id": 59,
+      "pageSize": null,
+      "showHeader": true,
+      "sort": {
+        "col": null,
+        "desc": false
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "align": "auto",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "hidden"
+        },
+        {
+          "alias": "Count",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 0,
+          "pattern": "Value",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "expr": "sort_desc(count by (reason) (csv_abnormal{name=~\"$operatorversion\", reason=~\"$csv_condition_state.*\"} $source $source_version))",
+          "format": "table",
+          "instant": true,
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "CSV condition states for Operator",
+      "transform": "table",
+      "type": "table-old"
+    },
+    {
+      "columns": [],
+      "datasource": "$datasource",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 49
+      },
+      "id": 61,
+      "pageSize": null,
+      "showHeader": true,
+      "sort": {
+        "col": null,
+        "desc": false
+      },
+      "styles": [
+        {
+          "alias": "",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "mappingType": 1,
+          "pattern": "Time",
+          "thresholds": [],
+          "type": "hidden",
+          "unit": "short"
+        },
+        {
+          "alias": "no. of installs",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "mappingType": 1,
+          "pattern": "Value",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "expr": "topk (50, sort_desc (count by (email_domain) (subscription_sync_total{installed=~\"$operatorversion\"} $source $source_version + on (_id) group_left(email_domain) (0 * topk by (_id) (1, subscription_labels $source $source_version)))))",
+          "format": "table",
+          "instant": true,
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Top 50 customers using Operator",
+      "transform": "table",
+      "type": "table-old"
+    },
+    {
+      "columns": [],
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 58
+      },
+      "id": 67,
+      "pageSize": null,
+      "showHeader": true,
+      "sort": {
+        "col": 0,
+        "desc": true
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "align": "auto",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "hidden"
+        },
+        {
+          "alias": "",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 2,
+          "pattern": "Value",
+          "thresholds": [],
+          "type": "hidden",
+          "unit": "short"
+        },
+        {
+          "alias": "Cluster_id",
+          "align": "auto",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "link": true,
+          "linkTargetBlank": true,
+          "linkTooltip": "See cluster dashboard",
+          "linkUrl": "/d/DCSXmFTWk7/olm-cluster-detail?orgId=1&var-_id=${__cell}",
+          "mappingType": 1,
+          "pattern": "_id",
+          "thresholds": [],
+          "type": "string",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "expr": "count by (_id) \r\n(\r\n(count by (_id,name) (csv_succeeded{name=~\"$operatorversion\"}>0 $source $source_version)) unless\r\n\r\n(count by (_id,name) (csv_abnormal{name=~\"$operatorversion\", reason=~\"Replaced|BeingReplaced\"}))\r\n)",
+          "format": "table",
+          "instant": true,
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Cluster IDs where Operator is installed",
+      "transform": "table",
+      "type": "table-old"
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 27,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "Data Hub",
+          "value": "Data Hub"
+        },
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": "All",
+          "value": "+ 0"
+        },
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "source",
+        "options": [
+          {
+            "selected": true,
+            "text": "All",
+            "value": "+ 0"
+          },
+          {
+            "selected": false,
+            "text": "External",
+            "value": "* on(_id) group_left(_blah) group by(_id) (id_version_ebs_account_internal:cluster_subscribed{internal=\"\"})"
+          },
+          {
+            "selected": false,
+            "text": "Subscribed clusters",
+            "value": "+ on (_id) group_left(_blah) (0 * topk by (_id) (1, subscription_labels{support=~\"Premium|Standard\"}))"
+          },
+          {
+            "selected": false,
+            "text": "Top 50",
+            "value": "+ on (_id) group_left(_blah) (0 * topk by (_id) (1, subscription_labels{ebs_account=~\"540759|635760|999625|537503|5693127|5384240|944147|1422600|786449|1222657|5793039|803465|5649327|5366280|6168550|1481327|1188618|729302|6029648|5263762|818035|554636|847791|951115|411070|1093881|5361067|785804|5818686|749694|351793|531488|620335|1266951|5739214|5477163|5609809|826519|112550|423644|54545|1039007|6116662|417106|612143\"}))"
+          },
+          {
+            "selected": false,
+            "text": "IBM System Z",
+            "value": "+ on(_id) group_left(_blah) cluster:virt_platform_nodes:sum{type=\"ibm_systemz\"}"
+          },
+          {
+            "selected": false,
+            "text": "IBM Power",
+            "value": "+ on(_id) group_left(_blah) topk by (_id) (1, cluster:virt_platform_nodes:sum{type=~\"ibm_power.*\"})"
+          }
+        ],
+        "query": "+ 0, + on (_id) group_left(_blah) (0 * topk by (_id) (1\\, cluster_version{type=\"current\"\\,version=~\"4\\\\.\\\\d+\\\\.\\\\d+\"})), + on (_id) group_left(_blah) (0 * ((time() - topk by (_id) (1\\, cluster_version{type=\"completed\"\\,version=~\"4\\\\.\\\\d+\\\\.\\\\d+\"})) < (21 * 24 * 60 * 60))) + on (_id) group_left(_blah) (0 * ((time() - topk by (_id) (1\\, cluster_version{type=\"initial\"})) > (7 * 24 * 60 * 60))), + on (_id) group_left(_blah) (0 * topk by (_id) (1\\, subscription_labels{email_domain!~\"redhat.com|(^|.*\\\\.)ibm.com\"})), + on (_id) group_left(_blah) (0 * topk by (_id) (1\\, subscription_labels{support=~\"Premium|Standard\"})),  + on (_id) group_left(_blah) (0 * topk by (_id) (1\\, cluster_version{type=\"current\"\\,version=~\"4\\\\.\\\\d+\\\\.\\\\d+\"})) + on (_id) group_left(_blah) (0 * topk by (_id) (1\\, subscription_labels{email_domain!=\"redhat.com\"})),  + on (_id) group_left(_blah) (0 * topk by (_id) (1\\, cluster_version{type=\"current\"\\,version=~\"4\\\\.\\\\d+\\\\.\\\\d+-0\\\\.nightly.+\"})) + on (_id) group_left(_blah) (0 * topk by (_id) (1\\, subscription_labels{email_domain!=\"redhat.com\"}))",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": "All",
+          "value": "+ 0"
+        },
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "source_version",
+        "options": [
+          {
+            "selected": true,
+            "text": "All",
+            "value": "+ 0"
+          },
+          {
+            "selected": false,
+            "text": "All 4.y.z versions",
+            "value": "+ on (_id) group_left(_blah) (0 * topk by (_id) (1, cluster_version{type=\"current\",version=~\"4\\\\.\\\\d+\\\\.\\\\d+\"}))"
+          },
+          {
+            "selected": false,
+            "text": "All 4.1.z versions",
+            "value": "+ on (_id) group_left(_blah) (0 * topk by (_id) (1, cluster_version{type=\"current\",version=~\"4\\\\.1\\\\.\\\\d+\"}))"
+          },
+          {
+            "selected": false,
+            "text": "All 4.2.z versions",
+            "value": "+ on (_id) group_left(_blah) (0 * topk by (_id) (1, cluster_version{type=\"current\",version=~\"4\\\\.2\\\\.\\\\d+\"}))"
+          },
+          {
+            "selected": false,
+            "text": "All 4.3.0-* versions",
+            "value": "+ on (_id) group_left(_blah) (0 * topk by (_id) (1, cluster_version{type=\"current\",version=~\"4\\\\.3\\\\.\\\\d+.*\"}))"
+          },
+          {
+            "selected": false,
+            "text": "All 3w clusters updated in the last 1w",
+            "value": "+ on (_id) group_left(_blah) (0 * ((time() - topk by (_id) (1, cluster_version{type=\"completed\",version=~\"4\\\\.\\\\d+\\\\.\\\\d+\"})) < (21 * 24 * 60 * 60))) + on (_id) group_left(_blah) (0 * ((time() - topk by (_id) (1, cluster_version{type=\"initial\"})) > (7 * 24 * 60 * 60)))"
+          },
+          {
+            "selected": false,
+            "text": "All nightly versions",
+            "value": "+ on (_id) group_left(_blah) (0 * topk by (_id) (1, cluster_version{type=\"current\",version=~\"4\\\\.\\\\d+\\\\.\\\\d+-0\\\\.nightly.+\"}))"
+          }
+        ],
+        "query": "+ 0, + on (_id) group_left(_blah) (0 * topk by (_id) (1\\, cluster_version{type=\"current\"\\,version=~\"4\\\\.1\\\\.\\\\d+\"})),  + on (_id) group_left(_blah) (0 * topk by (_id) (1\\, cluster_version{type=\"current\"\\,version=~\"4\\\\.2\\\\.\\\\d+\"})), + on (_id) group_left(_blah) (0 * topk by (_id) (1\\, cluster_version{type=\"current\"\\,version=~\"4\\\\.3\\\\.\\\\d+.*\"})),  + on (_id) group_left(_blah) (0 * ((time() - topk by (_id) (1\\, cluster_version{type=\"completed\"\\,version=~\"4\\\\.\\\\d+\\\\.\\\\d+\"})) < (21 * 24 * 60 * 60))) + on (_id) group_left(_blah) (0 * ((time() - topk by (_id) (1\\, cluster_version{type=\"initial\"})) > (7 * 24 * 60 * 60))), + on (_id) group_left(_blah) (0 * topk by (_id) (1\\, cluster_version{type=\"current\"\\,version=~\"4\\\\.\\\\d+\\\\.\\\\d+-0\\\\.nightly.+\"}))",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": "argocd-operator",
+          "value": "argocd-operator"
+        },
+        "datasource": "$datasource",
+        "definition": "query_result(count by(installed) (subscription_sync_total{installed!~\"packageserver.*\"}))",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "operator_name",
+        "multi": false,
+        "name": "operatorname",
+        "options": [],
+        "query": {
+          "query": "query_result(count by(installed) (subscription_sync_total{installed!~\"packageserver.*\"}))",
+          "refId": "Data Hub-operatorname-Variable-Query"
+        },
+        "refresh": 2,
+        "regex": "/installed=\"(.+)\\..+\\..+\\..+\"/",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": "$datasource",
+        "definition": "query_result(count by(installed) (subscription_sync_total{installed=~\"$operatorname.*\"}))",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": true,
+        "label": "operator_version",
+        "multi": false,
+        "name": "operatorversion",
+        "options": [],
+        "query": {
+          "query": "query_result(count by(installed) (subscription_sync_total{installed=~\"$operatorname.*\"}))",
+          "refId": "Data Hub-operatorversion-Variable-Query"
+        },
+        "refresh": 2,
+        "regex": "/installed=\"(.+)\"/",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "tags": [],
+          "text": "All",
+          "value": "RequirementsUnknown|AllRequirementsMet|InstallWaiting|InstallSucceeded|ComponentUnhealthy|BeingReplaced|Replaced|NeedsReinstall|NeedsCertRotation|APIServiceResourceIssue|APIServiceResourcesNeedReinstall|Copied|RequirementsNotMet|OwnerConflict|InstallComponentFailed|InvalidInstallStrategy|InstallCheckFailed|APIServiceInstallFailed|InvalidInstallModes|NoTargetNamespaces|UnsupportedOperatorGroup|NoOperatorGroup|TooManyOperatorGroups|InterOperatorGroupOwnerConflict|CannotModifyStaticOperatorGroupProvidedAPIs|UnsupportedWebhookRules|InstallComponentFailedNoRetry"
+        },
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "csv_condition_state",
+        "multi": false,
+        "name": "csv_condition_state",
+        "options": [
+          {
+            "selected": true,
+            "text": "All",
+            "value": "RequirementsUnknown|AllRequirementsMet|InstallWaiting|InstallSucceeded|ComponentUnhealthy|BeingReplaced|Replaced|NeedsReinstall|NeedsCertRotation|APIServiceResourceIssue|APIServiceResourcesNeedReinstall|Copied|RequirementsNotMet|OwnerConflict|InstallComponentFailed|InvalidInstallStrategy|InstallCheckFailed|APIServiceInstallFailed|InvalidInstallModes|NoTargetNamespaces|UnsupportedOperatorGroup|NoOperatorGroup|TooManyOperatorGroups|InterOperatorGroupOwnerConflict|CannotModifyStaticOperatorGroupProvidedAPIs|UnsupportedWebhookRules|InstallComponentFailedNoRetry"
+          },
+          {
+            "selected": false,
+            "text": "Attempting Install/Reinstall",
+            "value": "RequirementsUnknown|AllRequirementsMet|InstallWaiting|InstallSucceeded|ComponentUnhealthy|BeingReplaced|Replaced|NeedsReinstall|NeedsCertRotation|APIServiceResourceIssue|APIServiceResourcesNeedReinstall|Copied"
+          },
+          {
+            "selected": false,
+            "text": "Permanent Failure",
+            "value": "RequirementsNotMet|OwnerConflict|InstallComponentFailed|InvalidInstallStrategy|InstallCheckFailed|APIServiceInstallFailed|InvalidInstallModes|NoTargetNamespaces|UnsupportedOperatorGroup|NoOperatorGroup|TooManyOperatorGroups|InterOperatorGroupOwnerConflict|CannotModifyStaticOperatorGroupProvidedAPIs|UnsupportedWebhookRules|InstallComponentFailedNoRetry"
+          }
+        ],
+        "query": "RequirementsUnknown|AllRequirementsMet|InstallWaiting|InstallSucceeded|ComponentUnhealthy|BeingReplaced|Replaced|NeedsReinstall|NeedsCertRotation|APIServiceResourceIssue|APIServiceResourcesNeedReinstall|Copied|RequirementsNotMet|OwnerConflict|InstallComponentFailed|InvalidInstallStrategy|InstallCheckFailed|APIServiceInstallFailed|InvalidInstallModes|NoTargetNamespaces|UnsupportedOperatorGroup|NoOperatorGroup|TooManyOperatorGroups|InterOperatorGroupOwnerConflict|CannotModifyStaticOperatorGroupProvidedAPIs|UnsupportedWebhookRules|InstallComponentFailedNoRetry, RequirementsUnknown|AllRequirementsMet|InstallWaiting|InstallSucceeded|ComponentUnhealthy|BeingReplaced|Replaced|NeedsReinstall|NeedsCertRotation|APIServiceResourceIssue|APIServiceResourcesNeedReinstall|Copied, RequirementsNotMet|OwnerConflict|InstallComponentFailed|InvalidInstallStrategy|InstallCheckFailed|APIServiceInstallFailed|InvalidInstallModes|NoTargetNamespaces|UnsupportedOperatorGroup|NoOperatorGroup|TooManyOperatorGroups|InterOperatorGroupOwnerConflict|CannotModifyStaticOperatorGroupProvidedAPIs|UnsupportedWebhookRules|InstallComponentFailedNoRetry",
+        "skipUrlSync": false,
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-12h",
+    "to": "now-6h"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "",
+  "title": "OLM - Optional Operator Detail",
+  "uid": "DCSXmFTWk4",
+  "version": 2
+}
