@@ -18,8 +18,9 @@ podman run --name=grafana -p 3000:3000 \
   --security-opt label=disable \
   -v $PWD/config:/etc/grafana/provisioning \
   -v $PWD/dashboards:/var/lib/grafana/dashboards \
+  -v $PWD/plugins:/var/lib/grafana/plugins \
   -e "DATAHUB_TOKEN=<your Data Hub token>" \
-  docker.io/grafana/grafana
+  docker.io/grafana/grafana:7.4.3
 ```
 
 Point your web browser at http://localhost:3000 and login with
