@@ -34,7 +34,12 @@ bottom. If the test doesn't work, confirm you are connected to the VPN
 and that your login token (and just the token - not the whole oc login
 command) are set in the DATAHUB_TOKEN environment variable.
 
-### Run a test query
+### Explore the default dashboards
+
+After logging in, head to http://localhost:3000/dashboards to try one
+of the default dashboards.
+
+### Run a custom query
 
 Go to the Explore page (compass on left hand side) and run a test query, such as:
 
