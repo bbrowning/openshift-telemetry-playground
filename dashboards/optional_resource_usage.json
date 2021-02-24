@@ -1,0 +1,199 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "iteration": 1614140900147,
+  "links": [],
+  "panels": [
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "left",
+            "filterable": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 21,
+        "w": 9,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "showHeader": true
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "topk(200, sum by (apigroup) (\n  label_replace(cluster:usage:resources:sum{resource!~\".*\\\\.openshift\\\\.io|.*\\\\.k8s\\\\.io|.*\\\\.coreos.com|.*\\\\.metal3\\\\.io|.*\\\\.cni\\\\.cncf\\\\.io|.*\\\\.apps|.*\\\\.autoscaling|.*\\\\.batch|.*\\\\.policy|[^\\\\.]+\"} $source, \"apigroup\", \"$1.$2\", \"resource\", \"^.*\\\\.([^\\\\.]+)\\\\.([^\\\\.]+)$\")\n)) > 0",
+          "format": "table",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Top Optional API Group Resource Counts",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true
+            },
+            "indexByName": {},
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "left",
+            "filterable": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 21,
+        "w": 12,
+        "x": 9,
+        "y": 0
+      },
+      "id": 4,
+      "options": {
+        "showHeader": true
+      },
+      "pluginVersion": "7.4.2",
+      "targets": [
+        {
+          "expr": "topk(200, sum by (resource) (\n  cluster:usage:resources:sum{resource!~\".*\\\\.openshift\\\\.io|.*\\\\.k8s\\\\.io|.*\\\\.coreos.com|.*\\\\.metal3\\\\.io|.*\\\\.cni\\\\.cncf\\\\.io|.*\\\\.apps|.*\\\\.autoscaling|.*\\\\.batch|.*\\\\.policy|[^\\\\.]+\"} $source\n))",
+          "format": "table",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Top Optional Resource Counts",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true
+            },
+            "indexByName": {},
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "table"
+    }
+  ],
+  "schemaVersion": 27,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": "all",
+          "value": "*1"
+        },
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "source",
+        "options": [
+          {
+            "selected": true,
+            "text": "all",
+            "value": "*1"
+          },
+          {
+            "selected": false,
+            "text": "external",
+            "value": "* on(_id) group_left(_blah) group by(_id) (id_version_ebs_account_internal:cluster_subscribed{internal=\"\"})"
+          }
+        ],
+        "query": "all : *1, external : * on(_id) group_left(_blah) group by(_id) (id_version_ebs_account_internal:cluster_subscribed{internal=\"\"})",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now-6h"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Optional Resource Usage",
+  "uid": "oUuumKyMz",
+  "version": 2
+}

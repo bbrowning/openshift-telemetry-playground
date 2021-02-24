@@ -1,0 +1,13 @@
+apiVersion: 1
+
+datasources:
+- name: Data Hub
+  type: prometheus
+  access: proxy
+  url: https://telemeter-lts.datahub.redhat.com
+  isDefault: true
+  jsonData:
+    tlsSkipVerify: true
+    httpHeaderName1: 'Authorization'
+  secureJsonData:
+    httpHeaderValue1: 'Bearer $DATAHUB_TOKEN'
