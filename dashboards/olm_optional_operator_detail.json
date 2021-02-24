@@ -594,7 +594,8 @@
       "lines": true,
       "linewidth": 1,
       "links": [],
-      "nullPointMode": "null",
+      "maxDataPoints": 500,
+      "nullPointMode": "connected",
       "options": {
         "alertThreshold": true
       },
@@ -1332,7 +1333,7 @@
         "name": "operatorname",
         "options": [],
         "query": {
-          "query": "query_result(count by(installed) (subscription_sync_total{installed!~\"packageserver.*\"}))",
+          "query": "query_result(sort_desc(count by(installed) (subscription_sync_total{installed!~\"packageserver.*\"})))",
           "refId": "Data Hub-operatorname-Variable-Query"
         },
         "refresh": 2,
