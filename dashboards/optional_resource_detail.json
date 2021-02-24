@@ -567,7 +567,7 @@
           "value": "taskruns.tekton.dev"
         },
         "datasource": null,
-        "definition": "query_result(topk(250, sum by(resource) (cluster:usage:resources:sum{resource!~\".*\\\\.openshift\\\\.io|.*\\\\.k8s\\\\.io|.*\\\\.coreos.com|.*\\\\.metal3\\\\.io|.*\\\\.cni\\\\.cncf\\\\.io|.*\\\\.apps|.*\\\\.autoscaling|.*\\\\.batch|.*\\\\.policy|[^\\\\.]+\"})))",
+        "definition": "query_result(topk(500, sum by(resource) (cluster:usage:resources:sum{resource!~\".*\\\\.openshift\\\\.io|.*\\\\.k8s\\\\.io|.*\\\\.coreos.com|.*\\\\.metal3\\\\.io|.*\\\\.cni\\\\.cncf\\\\.io|.*\\\\.apps|.*\\\\.autoscaling|.*\\\\.batch|.*\\\\.policy|[^\\\\.]+\"})))",
         "description": null,
         "error": null,
         "hide": 0,
@@ -577,7 +577,7 @@
         "name": "resource",
         "options": [],
         "query": {
-          "query": "query_result(topk(250, sum by(resource) (cluster:usage:resources:sum{resource!~\".*\\\\.openshift\\\\.io|.*\\\\.k8s\\\\.io|.*\\\\.coreos.com|.*\\\\.metal3\\\\.io|.*\\\\.cni\\\\.cncf\\\\.io|.*\\\\.apps|.*\\\\.autoscaling|.*\\\\.batch|.*\\\\.policy|[^\\\\.]+\"})))",
+          "query": "query_result(topk(500, sum by(resource) (cluster:usage:resources:sum{resource!~\".*\\\\.openshift\\\\.io|.*\\\\.k8s\\\\.io|.*\\\\.coreos.com|.*\\\\.metal3\\\\.io|.*\\\\.cni\\\\.cncf\\\\.io|.*\\\\.apps|.*\\\\.autoscaling|.*\\\\.batch|.*\\\\.policy|[^\\\\.]+\"})))",
           "refId": "StandardVariableQuery"
         },
         "refresh": 2,
