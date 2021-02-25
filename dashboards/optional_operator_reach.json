@@ -177,12 +177,12 @@
         "name": "source",
         "options": [
           {
-            "selected": false,
+            "selected": true,
             "text": "all",
             "value": "*1"
           },
           {
-            "selected": true,
+            "selected": false,
             "text": "external",
             "value": "* on(_id) group_left(_blah) group by(_id) (id_version_ebs_account_internal:cluster_subscribed{internal=\"\"})"
           }
