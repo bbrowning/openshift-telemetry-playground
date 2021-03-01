@@ -15,8 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 2,
-  "iteration": 1614140647591,
+  "iteration": 1614615053565,
   "links": [],
   "panels": [
     {
@@ -67,7 +66,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "sum(cluster:usage:resources:sum{resource=\"${resource}\"} $source)",
@@ -121,7 +120,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -229,7 +228,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "max(cluster:usage:resources:sum{resource=\"${resource}\"} $source)",
@@ -291,7 +290,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "avg(cluster:usage:resources:sum{resource=\"${resource}\"} $source)",
@@ -353,7 +352,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "quantile(0.50, cluster:usage:resources:sum{resource=\"${resource}\"} $source)",
@@ -415,7 +414,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "quantile(0.75, cluster:usage:resources:sum{resource=\"${resource}\"} $source)",
@@ -477,7 +476,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "quantile(0.90, cluster:usage:resources:sum{resource=\"${resource}\"} $source)",
@@ -539,7 +538,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "quantile(0.95, cluster:usage:resources:sum{resource=\"${resource}\"} $source)",
@@ -552,6 +551,136 @@
       ],
       "title": "95th quantile count per cluster",
       "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "left",
+            "filterable": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 14,
+        "x": 0,
+        "y": 25
+      },
+      "id": 12,
+      "options": {
+        "showHeader": true
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "topk(20, sum by(_id) (cluster:usage:resources:sum{resource=\"${resource}\"}) $source) * on(_id) group_left(email_domain) group by(_id, email_domain) (topk by(_id) (1, subscription_labels))",
+          "format": "table",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Top Cluster Usage of Resource",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true
+            },
+            "indexByName": {},
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "left",
+            "filterable": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 7,
+        "x": 14,
+        "y": 25
+      },
+      "id": 13,
+      "options": {
+        "showHeader": true
+      },
+      "pluginVersion": "7.4.3",
+      "targets": [
+        {
+          "expr": "topk(20, sum by(email_domain) (cluster:usage:resources:sum{resource=\"${resource}\"} $source * on(_id) group_left(email_domain) group by(_id, email_domain) (topk by(_id) (1, subscription_labels))))",
+          "format": "table",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Top Customer Usage of Resource",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true
+            },
+            "indexByName": {},
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "table"
     }
   ],
   "schemaVersion": 27,
@@ -562,7 +691,7 @@
       {
         "allValue": null,
         "current": {
-          "selected": false,
+          "selected": true,
           "text": "taskruns.tekton.dev",
           "value": "taskruns.tekton.dev"
         },
@@ -634,5 +763,5 @@
   "timezone": "",
   "title": "Optional Resource Detail",
   "uid": "0pTc_FyGz",
-  "version": 2
+  "version": 1
 }
