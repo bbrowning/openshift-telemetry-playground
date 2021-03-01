@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1614140900147,
+  "iteration": 1614613240611,
   "links": [],
   "panels": [
     {
@@ -56,7 +56,7 @@
       "options": {
         "showHeader": true
       },
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "topk(200, sum by (apigroup) (\n  label_replace(cluster:usage:resources:sum{resource!~\".*\\\\.openshift\\\\.io|.*\\\\.k8s\\\\.io|.*\\\\.coreos.com|.*\\\\.metal3\\\\.io|.*\\\\.cni\\\\.cncf\\\\.io|.*\\\\.apps|.*\\\\.autoscaling|.*\\\\.batch|.*\\\\.policy|[^\\\\.]+\"} $source, \"apigroup\", \"$1.$2\", \"resource\", \"^.*\\\\.([^\\\\.]+)\\\\.([^\\\\.]+)$\")\n)) > 0",
@@ -95,6 +95,13 @@
             "align": "left",
             "filterable": false
           },
+          "links": [
+            {
+              "targetBlank": false,
+              "title": "Resource Details Dashboard",
+              "url": "d/0pTc_FyGz/optional-resource-detail?${source:queryparam}&var-resource=${__data.fields.resource}"
+            }
+          ],
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -119,10 +126,11 @@
         "y": 0
       },
       "id": 4,
+      "links": [],
       "options": {
         "showHeader": true
       },
-      "pluginVersion": "7.4.2",
+      "pluginVersion": "7.4.3",
       "targets": [
         {
           "expr": "topk(200, sum by (resource) (\n  cluster:usage:resources:sum{resource!~\".*\\\\.openshift\\\\.io|.*\\\\.k8s\\\\.io|.*\\\\.coreos.com|.*\\\\.metal3\\\\.io|.*\\\\.cni\\\\.cncf\\\\.io|.*\\\\.apps|.*\\\\.autoscaling|.*\\\\.batch|.*\\\\.policy|[^\\\\.]+\"} $source\n))",
@@ -195,5 +203,5 @@
   "timezone": "",
   "title": "Optional Resource Usage",
   "uid": "oUuumKyMz",
-  "version": 2
+  "version": 1
 }
