@@ -114,7 +114,7 @@
       },
       "lines": true,
       "linewidth": 1,
-      "maxDataPoints": 250,
+      "maxDataPoints": 100,
       "nullPointMode": "connected",
       "options": {
         "alertThreshold": true
