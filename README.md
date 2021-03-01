@@ -23,10 +23,12 @@ podman run --name=grafana -p 3000:3000 \
   docker.io/grafana/grafana:7.4.3
 ```
 
-Point your web browser at http://localhost:3000 and login with
-admin/admin.
+If you get an error like `"container init caused: rootfs_linux.go:59: mounting \"sysfs\" to rootfs at \"/sys\" caused: operation not permitted": OCI permission denied"` when running the above command and you're using podman 3.x, make you need to `dnf install crun` and try again.
 
 ### Verify the Data Hub data source
+
+Point your web browser at http://localhost:3000 and login with
+admin/admin.
 
 In Grafana, click Configuration (gear icon on left) -> Data Sources,
 select the Data Hub source, and click the Test button at the
