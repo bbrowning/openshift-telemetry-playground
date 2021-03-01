@@ -23,7 +23,7 @@ podman run --name=grafana -p 3000:3000 \
   docker.io/grafana/grafana:7.4.3
 ```
 
-If you get an error like `"container init caused: rootfs_linux.go:59: mounting \"sysfs\" to rootfs at \"/sys\" caused: operation not permitted": OCI permission denied"` when running the above command and you're using podman 3.x, make you need to `dnf install crun` and try again.
+If you get an error like `"container init caused: rootfs_linux.go:59: mounting \"sysfs\" to rootfs at \"/sys\" caused: operation not permitted": OCI permission denied"` when running the above command and you're using podman 3.x, you need to `dnf install crun` and try again.
 
 ### Verify the Data Hub data source
 
