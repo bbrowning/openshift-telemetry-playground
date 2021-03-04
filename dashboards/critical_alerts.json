@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1614881248130,
+  "iteration": 1614881284722,
   "links": [],
   "panels": [
     {
@@ -181,9 +181,19 @@
             "selected": false,
             "text": "external",
             "value": "* on(_id) group_left(_blah) group by(_id) (id_version_ebs_account_internal:cluster_subscribed{internal=\"\"})"
+          },
+          {
+            "selected": false,
+            "text": "older than 7 days",
+            "value": "* on(_id) group_left(_blah) group by(_id) (((time() - cluster_version{type=\"cluster\"}) > 7 * 24 * 60 * 60))"
+          },
+          {
+            "selected": false,
+            "text": "managed",
+            "value": "* on(_id) group_left(_blah) group by(_id) (subscription_labels{managed=\"true\"})"
           }
         ],
-        "query": "all : *1, external : * on(_id) group_left(_blah) group by(_id) (id_version_ebs_account_internal:cluster_subscribed{internal=\"\"})",
+        "query": "all : *1, external : * on(_id) group_left(_blah) group by(_id) (id_version_ebs_account_internal:cluster_subscribed{internal=\"\"}), older than 7 days : * on(_id) group_left(_blah) group by(_id) (((time() - cluster_version{type=\"cluster\"}) > 7 * 24 * 60 * 60)), managed : * on(_id) group_left(_blah) group by(_id) (subscription_labels{managed=\"true\"})",
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
@@ -198,5 +208,5 @@
   "timezone": "",
   "title": "Critical Alerts",
   "uid": "lEyE3z8Gz",
-  "version": 2
+  "version": 3
 }
