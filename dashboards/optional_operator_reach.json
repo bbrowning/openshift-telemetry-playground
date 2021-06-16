@@ -185,9 +185,14 @@
             "selected": false,
             "text": "external",
             "value": "* on(_id) group_left(_blah) group by(_id) (id_version_ebs_account_internal:cluster_subscribed{internal=\"\"})"
+          },
+          {
+            "selected": false,
+            "text": "managed",
+            "value": "* on(_id) group_left(_blah) group by(_id) (subscription_labels{managed=\"true\"})"
           }
         ],
-        "query": "all : *1, external : * on(_id) group_left(_blah) group by(_id) (id_version_ebs_account_internal:cluster_subscribed{internal=\"\"})",
+        "query": "all : *1, external : * on(_id) group_left(_blah) group by(_id) (id_version_ebs_account_internal:cluster_subscribed{internal=\"\"}), managed : * on(_id) group_left(_blah) group by(_id) (subscription_labels{managed=\"true\"})",
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
